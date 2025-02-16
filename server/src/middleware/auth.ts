@@ -11,10 +11,14 @@ export const authenticateToken = (req: Request, res: Response, next: NextFunctio
   if (header) {
     const storeToken = header.split(" ")[1];
     const secretKey = process.env.JWT_SECRET_KEY || "";
-    jwt.verify(storeToken, secretKey, (err, user) => {
+
+    jwt.verify(storeToken, secretKey, (err, decoded) => {
       if (err) {
         return res.sendStatus(403)
       }
+
+      req.user = decoded as JwtPayload
+      next();
     });
   }
 };
