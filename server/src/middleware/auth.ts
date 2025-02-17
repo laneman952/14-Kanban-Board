@@ -17,17 +17,20 @@ export const authenticateToken = (req: Request, res: Response, next: NextFunctio
   if (!header) {
     return res.status(401).json({ message: "Unauthorized" });
   }
-  if (header) {
+
     const token = header.split(" ")[1];
     const secretKey = process.env.JWT_SECRET_KEY || "";
 
-    jwt.verify(token, secretKey, (err, decoded) => {
+    return jwt.verify(token, secretKey, (err, decoded) => {
       if (err) {
         return res.sendStatus(403)
       }
 
-      req.user = decoded as JwtPayload
-      next();
+      if (!decoded) {
+        return res.status(403).json({ message: "Invalid token" });
+      }
+
+      req.user = decoded as JwtPayload;
+      return next();
     });
-  }
 };
