@@ -3,7 +3,7 @@
 ![License: MIT](https://img.shields.io/badge/License-MIT-green)
 
   ## Description
-  This project is creating an application that allows a user to search for candidates to hire. It can save and remove potential candidates with their information.
+  This project is creating an application 
 
 
   ## Table of Contents
