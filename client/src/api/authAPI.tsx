@@ -12,7 +12,6 @@ const login = async (userInfo: UserLogin) => {
     });
 
     const data = await response.json();
-    console.log(JSON.stringify(data))
     if (!response.ok) {
       throw new Error('User information not retrieved, check network tab!');
     }
