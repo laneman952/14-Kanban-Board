@@ -22,6 +22,11 @@ const Navbar = () => {
         <Link to='/'>Krazy Kanban Board</Link>
       </div>
       <ul>
+      <li className='nav-item'>
+            <button type='button'>
+              <Link to='/create'>New Ticket</Link>
+            </button>
+          </li>
       {
         !loginCheck ? (
           <li className='nav-item'>

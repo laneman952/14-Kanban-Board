@@ -26,7 +26,7 @@ class AuthService {
       return false;
     }
   }
-}
+// }
 
   getToken(): string {
     // TODO: return the token
