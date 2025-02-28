@@ -23,11 +23,11 @@ export const authenticateToken = (req: Request, res: Response, next: NextFunctio
 
     return jwt.verify(token, secretKey, (err, decoded) => {
       if (err) {
-        return res.sendStatus(403)
+        return res.sendStatus(401)
       }
 
       if (!decoded) {
-        return res.status(403).json({ message: "Invalid token" });
+        return res.status(401).json({ message: "Invalid token" });
       }
 
       req.user = decoded as JwtPayload;
